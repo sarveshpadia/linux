@@ -11,6 +11,7 @@
 #define	MAX_CHAP_N_SIZE		512
 
 #define MD5_SIGNATURE_SIZE	16	/* 16 bytes in a MD5 message digest */
+#define SHA1_SIGNATURE_SIZE	20
 
 #define CHAP_STAGE_CLIENT_A	1
 #define CHAP_STAGE_SERVER_AIC	2
