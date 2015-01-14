@@ -140,6 +140,16 @@ static struct iscsi_chap *chap_server_open(
 		chap->digest_type = CHAP_DIGEST_MD5;
 		pr_debug("[server] Sending CHAP_A=%d\n", chap->digest_type);
 		break;
+	case CHAP_DIGEST_SHA:
+		pr_debug("[server] Got CHAP_A=6\n");
+		/*
+		 * Send back CHAP_A set to SHA.
+		*/
+		*aic_len = sprintf(aic_str, "CHAP_A=6"); // creating out_text
+		*aic_len += 1; // for including null character
+		chap->digest_type = CHAP_DIGEST_SHA;
+		pr_debug("[server] Sending CHAP_A=%d\n", chap->digest_type);
+		break;
 	case CHAP_DIGEST_UNKNOWN:
 	default:
 		pr_err("Unsupported CHAP_A value\n");
