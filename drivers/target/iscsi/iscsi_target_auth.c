@@ -100,6 +100,11 @@ static int chap_check_algorithm(const char *a_str)
 			kfree(orig);
 			return CHAP_DIGEST_MD5;
 		}
+		else if (!strncmp(token, "6", 1)) {
+			pr_debug("Selected SHA1 Algorithm\n");
+			kfree(orig);
+			return CHAP_DIGEST_SHA;
+		}		
 	}
 out:
 	kfree(orig);
