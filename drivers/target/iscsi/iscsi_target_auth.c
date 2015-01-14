@@ -460,6 +460,11 @@ static int chap_got_response(
 				nr_out_ptr, nr_out_len) < 0)
 			return -1;
 		return 0;
+	case CHAP_DIGEST_SHA: 
+		if (chap_server_compute_sha1(conn, auth, nr_in_ptr,
+				nr_out_ptr, nr_out_len) < 0)
+			return -1;
+		return 0;		
 	default:
 		pr_err("Unknown CHAP digest type %d!\n",
 				chap->digest_type);
